@@ -12,7 +12,7 @@ export const useEvents = () => {
   });
 };
 
-export const eventsMutation = (queryClient: QueryClient) => {
+export const useEventsMutation = (queryClient: QueryClient) => {
   return useMutation({
     mutationFn: async (newEvent: EventDetails) =>
       await axios.post("/api/events", newEvent),
@@ -27,7 +27,7 @@ export const eventsMutation = (queryClient: QueryClient) => {
   });
 };
 
-export const eventUpdate = (queryClient: QueryClient) => {
+export const useEventUpdate = (queryClient: QueryClient) => {
   return useMutation({
     mutationFn: async (newEvent: EventDetails) =>
       await axios.put(`/api/events/${newEvent._id}`, newEvent),
@@ -41,7 +41,7 @@ export const eventUpdate = (queryClient: QueryClient) => {
   });
 };
 
-export const eventDelete = (queryClient: QueryClient) => {
+export const useEventDelete = (queryClient: QueryClient) => {
   return useMutation({
     mutationFn: async (evenId: string) =>
       await axios.delete(`/api/events/${evenId}`),

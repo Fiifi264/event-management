@@ -4,7 +4,7 @@ import Link from "next/link";
 import React, { ChangeEvent, useState } from "react";
 import EventDetails from "../interfaces/event-details.interfaces";
 import { useEvents } from "../hooks/useEvents";
-import { useUsers, usersMutation } from "../hooks/useUsers";
+import { useUsers, useUserMutation } from "../hooks/useUsers";
 import UserDetails from "../interfaces/user-details.interfaces";
 import { useQueryClient } from "@tanstack/react-query";
 
@@ -39,7 +39,7 @@ const EventDisplay = () => {
   const { data, isError, isLoading } = useEvents();
 
   const queryClient = useQueryClient();
-  const { mutate: addUser, isSuccess } = usersMutation(queryClient);
+  const { mutate: addUser, isSuccess } = useUserMutation(queryClient);
 
   const handleRegister = () => {
     if (user) {

@@ -3,9 +3,9 @@ import Link from "next/link";
 import { useState, useEffect, ChangeEvent, ChangeEventHandler } from "react";
 import EventDetails from "../interfaces/event-details.interfaces";
 import {
-  eventDelete,
-  eventUpdate,
-  eventsMutation,
+  useEventDelete,
+  useEventUpdate,
+  useEventsMutation,
   useEvents,
 } from "../hooks/useEvents";
 import axios from "axios";
@@ -47,9 +47,9 @@ const Event = () => {
   const { data: events } = useEvents();
 
   const queryClient = useQueryClient();
-  const { mutate: addEvent } = eventsMutation(queryClient);
-  const { mutate: updateEvent } = eventUpdate(queryClient);
-  const { mutate: deleteEvent } = eventDelete(queryClient);
+  const { mutate: addEvent } = useEventsMutation(queryClient);
+  const { mutate: updateEvent } = useEventUpdate(queryClient);
+  const { mutate: deleteEvent } = useEventDelete(queryClient);
   // newEvent.title.substring(3) + Math.floor(Math.random() * 10000) + 1
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {

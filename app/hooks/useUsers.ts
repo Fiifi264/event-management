@@ -12,7 +12,7 @@ export const useUsers = () => {
   });
 };
 
-export const usersMutation = (queryClient: QueryClient) => {
+export const useUserMutation = (queryClient: QueryClient) => {
   return useMutation({
     mutationFn: async (newUser: UserDetails) =>
       await axios.post("/api/users", newUser),
@@ -26,7 +26,7 @@ export const usersMutation = (queryClient: QueryClient) => {
   });
 };
 
-export const userUpdate = (queryClient: QueryClient) => {
+export const useUserUpdate = (queryClient: QueryClient) => {
   return useMutation({
     mutationFn: async (newUser: UserDetails) =>
       await axios.put(`/api/users/${newUser._id}`, newUser),
