@@ -67,7 +67,7 @@ const EventDisplay = () => {
       {/* Modal */}
       {formVisible && (
         <div
-          className={`absolute w-full overflow-hidden h-full flex bg-black/50 z-10 justify-center py-10 `}
+          className={`absolute top-0 w-full overflow-hidden h-full flex bg-black/50 z-10 justify-center py-10 `}
         >
           <div>
             <div className="bg-white p-5 space-y-3 rounded-lg relative overflow-hidden">
@@ -143,6 +143,7 @@ const EventDisplay = () => {
                   onClick={() => {
                     setFormVisible(true);
                     setEventToRegister(item);
+                    window.scrollTo(0, 0);
                     document.body.style.overflow = "hidden";
                   }}
                   className="bg-transparent border border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white py-1 px-4 rounded-full"
