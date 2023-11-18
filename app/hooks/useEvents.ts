@@ -1,6 +1,6 @@
 import EventDetails from "../interfaces/event-details.interfaces";
 import axios from "axios";
-import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import { useQuery, useMutation, QueryClient } from "@tanstack/react-query";
 
 export const useEvents = () => {
   return useQuery({
@@ -12,9 +12,7 @@ export const useEvents = () => {
   });
 };
 
-export const eventsMutation = () => {
-  const queryClient = useQueryClient();
-
+export const eventsMutation = (queryClient: QueryClient) => {
   return useMutation({
     mutationFn: async (newEvent: EventDetails) =>
       await axios.post("/api/events", newEvent),
@@ -29,9 +27,7 @@ export const eventsMutation = () => {
   });
 };
 
-export const eventUpdate = () => {
-  const queryClient = useQueryClient();
-
+export const eventUpdate = (queryClient: QueryClient) => {
   return useMutation({
     mutationFn: async (newEvent: EventDetails) =>
       await axios.put(`/api/events/${newEvent._id}`, newEvent),
@@ -45,9 +41,7 @@ export const eventUpdate = () => {
   });
 };
 
-export const eventDelete = () => {
-  const queryClient = useQueryClient();
-
+export const eventDelete = (queryClient: QueryClient) => {
   return useMutation({
     mutationFn: async (evenId: string) =>
       await axios.delete(`/api/events/${evenId}`),

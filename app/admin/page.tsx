@@ -11,6 +11,7 @@ import {
 import axios from "axios";
 import { Formik, Field, Form, ErrorMessage, useFormikContext } from "formik";
 import { useUsers } from "../hooks/useUsers";
+import { useQueryClient } from "@tanstack/react-query";
 
 const defaultEvents: EventDetails[] = [
   {
@@ -44,9 +45,11 @@ const Event = () => {
     isError: isUserError,
   } = useUsers();
   const { data: events } = useEvents();
-  const { mutate: addEvent } = eventsMutation();
-  const { mutate: updateEvent } = eventUpdate();
-  const { mutate: deleteEvent } = eventDelete();
+
+  const queryClient = useQueryClient();
+  const { mutate: addEvent } = eventsMutation(queryClient);
+  const { mutate: updateEvent } = eventUpdate(queryClient);
+  const { mutate: deleteEvent } = eventDelete(queryClient);
   // newEvent.title.substring(3) + Math.floor(Math.random() * 10000) + 1
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -226,8 +229,8 @@ const Event = () => {
 
           {activePage === "registeredUsers" && (
             <ol className="list-decimal ps-5 pt-5 space-y-4">
-              {users?.map((user) => (
-                <li>
+              {users?.map((user, index) => (
+                <li key={index}>
                   <p className="font-bold">Name: {user.fullname}</p>
                   <p>Event ID: #{user.eventId}</p>
                   <p>Email: {user.email}</p>

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import { useQuery, useMutation, QueryClient } from "@tanstack/react-query";
 import UserDetails from "../interfaces/user-details.interfaces";
 
 export const useUsers = () => {
@@ -12,9 +12,7 @@ export const useUsers = () => {
   });
 };
 
-export const usersMutation = () => {
-  const queryClient = useQueryClient();
-
+export const usersMutation = (queryClient: QueryClient) => {
   return useMutation({
     mutationFn: async (newUser: UserDetails) =>
       await axios.post("/api/users", newUser),
@@ -28,9 +26,7 @@ export const usersMutation = () => {
   });
 };
 
-export const userUpdate = () => {
-  const queryClient = useQueryClient();
-
+export const userUpdate = (queryClient: QueryClient) => {
   return useMutation({
     mutationFn: async (newUser: UserDetails) =>
       await axios.put(`/api/users/${newUser._id}`, newUser),

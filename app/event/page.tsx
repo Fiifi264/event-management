@@ -6,6 +6,7 @@ import EventDetails from "../interfaces/event-details.interfaces";
 import { useEvents } from "../hooks/useEvents";
 import { useUsers, usersMutation } from "../hooks/useUsers";
 import UserDetails from "../interfaces/user-details.interfaces";
+import { useQueryClient } from "@tanstack/react-query";
 
 const FormInput = ({
   className,
@@ -37,7 +38,8 @@ const EventDisplay = () => {
 
   const { data, isError, isLoading } = useEvents();
 
-  const { mutate: addUser, isSuccess } = usersMutation();
+  const queryClient = useQueryClient();
+  const { mutate: addUser, isSuccess } = usersMutation(queryClient);
 
   const handleRegister = () => {
     if (user) {
