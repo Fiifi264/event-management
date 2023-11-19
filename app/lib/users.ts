@@ -1,13 +1,13 @@
 import UserDetails from "../interfaces/user-details.interfaces";
 
 let users: UserDetails[] = [
-  {
-    _id: "1",
-    fullname: "My Full Name",
-    email: "someone@gmail.com",
-    location: "Ghana - Accra",
-    eventId: "1",
-  },
+  // {
+  //   _id: "1",
+  //   fullname: "My Full Name",
+  //   email: "someone@gmail.com",
+  //   location: "Ghana - Accra",
+  //   eventId: "1",
+  // },
 ];
 
 // handlers
