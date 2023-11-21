@@ -29,7 +29,7 @@ export const useUserMutation = (queryClient: QueryClient) => {
 export const useUserUpdate = (queryClient: QueryClient) => {
   return useMutation({
     mutationFn: async (newUser: UserDetails) =>
-      await axios.put(`/api/users/${newUser._id}`, newUser),
+      await axios.put(`/api/users/${newUser.id}`, newUser),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["users"] });
     },

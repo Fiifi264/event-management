@@ -18,12 +18,12 @@ export const addUser = (user: UserDetails) => {
 };
 
 export const deleteUser = (userId: string) => {
-  users = users.filter((user) => user._id !== userId);
+  users = users.filter((user) => user.id !== userId);
 };
 
 export const updateUser = (userId: string, changes: Partial<UserDetails>) => {
   // Find the index of the user in the users array
-  const userIndex = users.findIndex((user) => user._id === userId);
+  const userIndex = users.findIndex((user) => user.id === userId);
 
   if (userIndex !== -1) {
     // Create a new object for the updated user with the specified changes
@@ -43,5 +43,5 @@ export const updateUser = (userId: string, changes: Partial<UserDetails>) => {
 };
 
 export const getById = (userId: string) => {
-  return users.find((user) => user._id === userId);
+  return users.find((user) => user.id === userId);
 };

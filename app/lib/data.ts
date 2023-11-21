@@ -53,7 +53,7 @@ export const addEvent = (event: EventDetails) => {
 };
 
 export const deleteEvent = (eventId: string) => {
-  events = events.filter((event) => event._id.toString() !== eventId);
+  events = events.filter((event) => event.id.toString() !== eventId);
 };
 
 export const updateEvent = (
@@ -62,7 +62,7 @@ export const updateEvent = (
 ) => {
   // Find the index of the event in the events array
   const eventIndex = events.findIndex(
-    (event) => event._id.toString() === eventId
+    (event) => event.id.toString() === eventId
   );
 
   if (eventIndex !== -1) {
@@ -83,5 +83,5 @@ export const updateEvent = (
 };
 
 export const getById = (eventId: string) => {
-  return events.find((event) => event._id.toString() === eventId);
+  return events.find((event) => event.id.toString() === eventId);
 };

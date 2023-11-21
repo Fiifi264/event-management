@@ -30,7 +30,7 @@ export const useEventsMutation = (queryClient: QueryClient) => {
 export const useEventUpdate = (queryClient: QueryClient) => {
   return useMutation({
     mutationFn: async (newEvent: EventDetails) =>
-      await axios.put(`/api/events/${newEvent._id}`, newEvent),
+      await axios.put(`/api/events/${newEvent.id}`, newEvent),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["events"] });
     },

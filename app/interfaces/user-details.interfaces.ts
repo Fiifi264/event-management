@@ -1,5 +1,5 @@
 export default interface UserDetails {
-  _id: string;
+  id: string;
   fullname: string;
   email: string;
   location: string;

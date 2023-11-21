@@ -13,10 +13,10 @@ export const GET = async (req: NextRequest, res: NextResponse) => {
 
 export const POST = async (req: NextRequest, res: NextResponse) => {
   try {
-    const { _id, title, date, description } = await req.json();
+    const { id, title, date, description } = await req.json();
 
     const event = {
-      _id,
+      id,
       title,
       date,
       description,

@@ -15,13 +15,13 @@ import { useQueryClient } from "@tanstack/react-query";
 
 const defaultEvents: EventDetails[] = [
   {
-    _id: "1",
+    id: "1",
     title: "New Event 1",
     date: "16/11/2023",
     description: "This is a tech event that is about to happen recently",
   },
   {
-    _id: "2",
+    id: "2",
     title: "New Event 2",
     date: "17/11/2023",
     description: "This is a tech event that is about to happen again",
@@ -32,7 +32,7 @@ const Event = () => {
   // const [events, setEvents] = useState(defaultEvents);
   const [activePage, setActivePage] = useState("eventList");
   const [newEvent, setNewEvent] = useState<EventDetails>({
-    _id: "0",
+    id: "0",
     title: "",
     date: "",
     description: "",
@@ -69,14 +69,14 @@ const Event = () => {
     } else {
       addEvent({
         ...newEvent,
-        _id: `${
+        id: `${
           newEvent.title.substring(0, 3).toLowerCase() +
           Math.floor(Math.random() * 10000) +
           1
         }`,
       });
       setNewEvent({
-        _id: "",
+        id: "",
         title: "",
         date: "",
         description: "",
@@ -99,7 +99,7 @@ const Event = () => {
             onSubmit={handleSubmit}
             enableReinitialize
             initialValues={{
-              _id: "",
+              id: "",
               title: "",
               date: "",
               description: "",
@@ -108,10 +108,10 @@ const Event = () => {
             <Form className="sm:fixed top-20">
               <Field
                 type="text"
-                name="_id"
+                name="id"
                 value={
                   eventEdit
-                    ? eventEdit?._id
+                    ? eventEdit?.id
                     : Math.floor(Math.random() * 10000) + 1
                 }
                 onChange={handleChange}
@@ -188,7 +188,7 @@ const Event = () => {
           {activePage === "eventList" && (
             <ul>
               {events?.map((event) => (
-                <li key={event._id.toString()} className="mb-4">
+                <li key={event.id.toString()} className="mb-4">
                   <div className="flex flex-col justify-end items-end relative group">
                     <span className="font-bold z-10 cursor-pointer drop-shadow-lg rounded-full px-1">
                       ...
@@ -204,7 +204,7 @@ const Event = () => {
                         edit
                       </span>
                       <span
-                        onClick={() => handleDelete(event._id)}
+                        onClick={() => handleDelete(event.id)}
                         className="bg-white hover:shadow-md border border-gray-400 hover:bg-blue-500 hover:text-white mb-2 px-2 rounded-full hidden cursor-pointer group-hover:block"
                       >
                         delete
@@ -212,7 +212,7 @@ const Event = () => {
                     </div>
                   </div>
                   <p>
-                    <span className="font-bold">#{event._id}</span>
+                    <span className="font-bold">#{event.id}</span>
                   </p>
                   <h2 className="text-xl font-bold"> {event.title}</h2>
                   <p>
@@ -232,7 +232,7 @@ const Event = () => {
               {users?.map((user, index) => (
                 <li key={index}>
                   <p className="font-bold">Name: {user.fullname}</p>
-                  <p>Event ID: #{user.eventId}</p>
+                  <p>Event ID: #{user.id}</p>
                   <p>Email: {user.email}</p>
                   <p>Location: {user.location}</p>
                 </li>

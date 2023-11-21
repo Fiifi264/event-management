@@ -43,12 +43,12 @@ const EventDisplay = () => {
 
   const handleRegister = () => {
     if (user) {
-      const _id =
+      const id =
         user?.fullname.substring(0, 3).toLowerCase() +
         Math.floor(Math.random() * 10000) +
         1;
 
-      addUser({ ...user, _id, eventId: eventToRegister._id });
+      addUser({ ...user, id, eventId: eventToRegister.id });
       setUser(null);
     }
   };
@@ -82,7 +82,7 @@ const EventDisplay = () => {
               </span>
               <p className="font-bold">Provide your details</p>
               <p className="px-2 py-1 border block text-gray-500">
-                Event ID: # {eventToRegister?._id}
+                Event ID: # {eventToRegister?.id}
               </p>
               <FormInput
                 placeholder={"Full name"}
