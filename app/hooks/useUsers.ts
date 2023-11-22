@@ -20,8 +20,9 @@ export const useUserMutation = (queryClient: QueryClient) => {
       queryClient.invalidateQueries({ queryKey: ["users"] });
       alert("Registration Successful");
     },
-    onError: () => {
+    onError: (error) => {
       alert("An Error Occured, Please try again.");
+      console.log(error);
     },
   });
 };

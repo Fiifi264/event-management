@@ -1,48 +1,48 @@
 import EventDetails from "../interfaces/event-details.interfaces";
 
 let events: EventDetails[] = [
-  // {
-  //   _id: "1",
-  //   title: "New Event 1",
-  //   date: "23/11/2023",
-  //   description:
-  //     "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas",
-  // },
-  // {
-  //   _id: "2",
-  //   title: "New Event 1",
-  //   date: "23/11/2023",
-  //   description:
-  //     "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas",
-  // },
-  // {
-  //   _id: "3",
-  //   title: "New Event 1",
-  //   date: "23/11/2023",
-  //   description:
-  //     "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas",
-  // },
-  // {
-  //   _id: "4",
-  //   title: "New Event 1",
-  //   date: "23/11/2023",
-  //   description:
-  //     "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas",
-  // },
-  // {
-  //   _id: "5",
-  //   title: "New Event 1",
-  //   date: "23/11/2023",
-  //   description:
-  //     "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas",
-  // },
-  // {
-  //   _id: "6",
-  //   title: "New Event 1",
-  //   date: "23/11/2023",
-  //   description:
-  //     "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas",
-  // },
+  {
+    id: "1",
+    title: "New Event 1",
+    date: "23/11/2023",
+    description:
+      "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas",
+  },
+  {
+    id: "2",
+    title: "New Event 1",
+    date: "23/11/2023",
+    description:
+      "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas",
+  },
+  {
+    id: "3",
+    title: "New Event 1",
+    date: "23/11/2023",
+    description:
+      "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas",
+  },
+  {
+    id: "4",
+    title: "New Event 1",
+    date: "23/11/2023",
+    description:
+      "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas",
+  },
+  {
+    id: "5",
+    title: "New Event 1",
+    date: "23/11/2023",
+    description:
+      "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas",
+  },
+  {
+    id: "6",
+    title: "New Event 1",
+    date: "23/11/2023",
+    description:
+      "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas",
+  },
 ];
 
 // handlers
