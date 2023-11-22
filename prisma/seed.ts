@@ -7,6 +7,7 @@ async function main() {
     where: { email: "test@gmail.com" },
     update: {},
     create: {
+      userId: "10efiFj",
       email: "test@gmail.com",
       fullname: "Test User",
       location: "Accra - Ghana",

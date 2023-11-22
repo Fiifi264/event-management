@@ -19,7 +19,7 @@ export default function SignIn() {
       alert(JSON.stringify(data));
 
       // redirect the user to /dashboard
-      push("/admin/events");
+      push("/admin");
     } catch (e) {
       const error = e as AxiosError;
 

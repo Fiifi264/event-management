@@ -2,7 +2,7 @@ import UserDetails from "../interfaces/user-details.interfaces";
 
 let users: UserDetails[] = [
   {
-    id: "1",
+    userId: "1",
     fullname: "My Full Name",
     email: "someone@gmail.com",
     location: "Ghana - Accra",
@@ -18,12 +18,12 @@ export const addUser = (user: UserDetails) => {
 };
 
 export const deleteUser = (userId: string) => {
-  users = users.filter((user) => user.id !== userId);
+  users = users.filter((user) => user.userId !== userId);
 };
 
 export const updateUser = (userId: string, changes: Partial<UserDetails>) => {
   // Find the index of the user in the users array
-  const userIndex = users.findIndex((user) => user.id === userId);
+  const userIndex = users.findIndex((user) => user.userId === userId);
 
   if (userIndex !== -1) {
     // Create a new object for the updated user with the specified changes
@@ -43,5 +43,5 @@ export const updateUser = (userId: string, changes: Partial<UserDetails>) => {
 };
 
 export const getById = (userId: string) => {
-  return users.find((user) => user.id === userId);
+  return users.find((user) => user.userId === userId);
 };

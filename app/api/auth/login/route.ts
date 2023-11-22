@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { sign } from "jsonwebtoken";
 import { serialize } from "cookie";
+import { COOKIE_NAME } from "@/constants";
 
 export const POST = async (req: NextRequest, res: NextResponse) => {
   const { username, password } = await req.json();
@@ -26,7 +27,7 @@ export const POST = async (req: NextRequest, res: NextResponse) => {
     }
   );
 
-  const serialized = serialize("OutSiteJWT", token, {
+  const serialized = serialize(COOKIE_NAME, token, {
     httpOnly: true,
     secure: process.env.NODE_ENV === "development",
     sameSite: "strict",
