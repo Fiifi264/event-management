@@ -17,13 +17,13 @@ import { usePathname } from "next/navigation";
 
 const defaultEvents: EventDetails[] = [
   {
-    id: "1",
+    eventId: "1",
     title: "New Event 1",
     date: "16/11/2023",
     description: "This is a tech event that is about to happen recently",
   },
   {
-    id: "2",
+    eventId: "2",
     title: "New Event 2",
     date: "17/11/2023",
     description: "This is a tech event that is about to happen again",
@@ -36,7 +36,7 @@ const Event = () => {
   const [activePage, setActivePage] = useState("eventList");
   const [createEvent, setCreateEvent] = useState(false);
   const [newEvent, setNewEvent] = useState<EventDetails>({
-    id: "0",
+    eventId: "0",
     title: "",
     date: "",
     description: "",
@@ -75,14 +75,14 @@ const Event = () => {
     } else {
       addEvent({
         ...newEvent,
-        id: `${
+        eventId: `${
           newEvent.title.substring(0, 3).toLowerCase() +
           Math.floor(Math.random() * 10000) +
           1
         }`,
       });
       setNewEvent({
-        id: "",
+        eventId: "",
         title: "",
         date: "",
         description: "",
@@ -198,7 +198,7 @@ const Event = () => {
                         {index + 1}
                       </td>
                       <td className="py-3 whitespace-nowrap px-3">
-                        #{event.id}
+                        #{event.eventId}
                       </td>
                       <td className="py-3 whitespace-nowrap px-3">
                         {event.title}
@@ -223,7 +223,7 @@ const Event = () => {
                             className="bg-gray-500 cursor-pointer p-2.5 rounded-md"
                           ></span>
                           <span
-                            onClick={() => handleDelete(event.id)}
+                            onClick={() => handleDelete(event.eventId)}
                             className="bg-gray-500 cursor-pointer p-2.5 rounded-md"
                           ></span>
                         </div>

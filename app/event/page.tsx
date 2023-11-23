@@ -43,12 +43,12 @@ const EventDisplay = () => {
 
   const handleRegister = () => {
     if (user) {
-      const id =
+      const userId =
         user?.fullname.substring(0, 3).toLowerCase() +
         Math.floor(Math.random() * 10000) +
         1;
 
-      addUser({ ...user, id, eventId: eventToRegister.id });
+      addUser({ ...user, userId, eventId: eventToRegister.eventId });
       setUser(null);
       setFormVisible(false);
     }
@@ -74,7 +74,7 @@ const EventDisplay = () => {
               </span>
               <p className="text-xl font-bold text-center">Create Event</p>
               <p className="rounded-md font-bold w-full py-1 px-3 border text-gray-500">
-                Event ID: {"#" + eventToRegister.id}
+                Event ID: {"#" + eventToRegister.eventId}
               </p>
               <div>
                 <label htmlFor="title" className="font-medium mb-1 block">
@@ -132,7 +132,7 @@ const EventDisplay = () => {
             Upcoming Events
           </p>
           <Link
-            href={"/admin"}
+            href={"/admin/sign-in"}
             className="bg-blue-500 text-white py-1 px-5 rounded-md font-medium"
           >
             Admin Login

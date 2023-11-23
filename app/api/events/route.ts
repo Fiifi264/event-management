@@ -1,9 +1,11 @@
 import { addEvent, getEvents } from "@/app/lib/data";
+import { prisma } from "@/app/lib/prisma";
 import { NextRequest, NextResponse } from "next/server";
 
 export const GET = async (req: NextRequest, res: NextResponse) => {
   try {
-    const events = getEvents();
+    // const events = getEvents();
+    const events = await prisma.events.findMany();
 
     return NextResponse.json({ message: "OK", events }, { status: 200 });
   } catch (error) {
@@ -13,15 +15,18 @@ export const GET = async (req: NextRequest, res: NextResponse) => {
 
 export const POST = async (req: NextRequest, res: NextResponse) => {
   try {
-    const { id, title, date, description } = await req.json();
+    const { eventId, title, date, description } = await req.json();
 
-    const event = {
-      id,
-      title,
-      date,
-      description,
-    };
-    addEvent(event);
+    const event = await prisma.events.create({
+      data: {
+        eventId,
+        title,
+        date,
+        description,
+      },
+    });
+
+    // addEvent(event);
 
     return NextResponse.json({ message: "OK", event }, { status: 200 });
   } catch (error) {

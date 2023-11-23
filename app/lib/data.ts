@@ -2,42 +2,42 @@ import EventDetails from "../interfaces/event-details.interfaces";
 
 let events: EventDetails[] = [
   {
-    id: "1",
+    eventId: "1",
     title: "New Event 1",
     date: "23/11/2023",
     description:
       "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas",
   },
   {
-    id: "2",
+    eventId: "2",
     title: "New Event 1",
     date: "23/11/2023",
     description:
       "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas",
   },
   {
-    id: "3",
+    eventId: "3",
     title: "New Event 1",
     date: "23/11/2023",
     description:
       "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas",
   },
   {
-    id: "4",
+    eventId: "4",
     title: "New Event 1",
     date: "23/11/2023",
     description:
       "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas",
   },
   {
-    id: "5",
+    eventId: "5",
     title: "New Event 1",
     date: "23/11/2023",
     description:
       "Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas",
   },
   {
-    id: "6",
+    eventId: "6",
     title: "New Event 1",
     date: "23/11/2023",
     description:
@@ -52,8 +52,8 @@ export const addEvent = (event: EventDetails) => {
   events.push(event);
 };
 
-export const deleteEvent = (eventId: string) => {
-  events = events.filter((event) => event.id.toString() !== eventId);
+export const deleteEvent = (id: string) => {
+  events = events.filter((event) => event.eventId.toString() !== id);
 };
 
 export const updateEvent = (
@@ -62,7 +62,7 @@ export const updateEvent = (
 ) => {
   // Find the index of the event in the events array
   const eventIndex = events.findIndex(
-    (event) => event.id.toString() === eventId
+    (event) => event.eventId.toString() === eventId
   );
 
   if (eventIndex !== -1) {
@@ -83,5 +83,5 @@ export const updateEvent = (
 };
 
 export const getById = (eventId: string) => {
-  return events.find((event) => event.id.toString() === eventId);
+  return events.find((event) => event.eventId.toString() === eventId);
 };

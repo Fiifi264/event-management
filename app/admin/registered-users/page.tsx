@@ -1,27 +1,20 @@
 "use client";
-import Link from "next/link";
-import { useState, ChangeEvent } from "react";
+import { useState } from "react";
 import EventDetails from "../../interfaces/event-details.interfaces";
-import {
-  useEventDelete,
-  useEventUpdate,
-  useEventsMutation,
-  useEvents,
-} from "../../hooks/useEvents";
+
 import { useUsers } from "../../hooks/useUsers";
-import { useQueryClient } from "@tanstack/react-query";
 import { usePathname } from "next/navigation";
 import Sidebar from "../_components/sidebar";
 
 const defaultEvents: EventDetails[] = [
   {
-    id: "1",
+    eventId: "1",
     title: "New Event 1",
     date: "16/11/2023",
     description: "This is a tech event that is about to happen recently",
   },
   {
-    id: "2",
+    eventId: "2",
     title: "New Event 2",
     date: "17/11/2023",
     description: "This is a tech event that is about to happen again",

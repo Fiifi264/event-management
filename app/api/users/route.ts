@@ -17,7 +17,7 @@ export const POST = async (req: NextRequest, res: NextResponse) => {
   try {
     const { userId, fullname, email, location, eventId } = await req.json();
 
-    const user = prisma.user.create({
+    const user = await prisma.user.create({
       data: {
         userId,
         fullname,

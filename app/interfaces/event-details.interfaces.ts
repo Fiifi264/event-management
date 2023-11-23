@@ -1,5 +1,5 @@
 export default interface EventDetails {
-  id: string;
+  eventId: string;
   title: string;
   date: string;
   description: string;
