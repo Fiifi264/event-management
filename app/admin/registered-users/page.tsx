@@ -1,10 +1,13 @@
 "use client";
-import { useState } from "react";
-import EventDetails from "../../interfaces/event-details.interfaces";
+import { useEffect, useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
+import Cookies from "js-cookie";
 
+import EventDetails from "../../interfaces/event-details.interfaces";
 import { useUsers } from "../../hooks/useUsers";
-import { usePathname } from "next/navigation";
 import Sidebar from "../_components/sidebar";
+import { COOKIE_NAME } from "@/constants";
+import { decode, verify } from "jsonwebtoken";
 
 const defaultEvents: EventDetails[] = [
   {
@@ -31,13 +34,38 @@ const RegisteredUsers = () => {
     isError: isUserError,
   } = useUsers();
 
+  const router = useRouter();
+  const [isAuthorized, setIsAuthorized] = useState(false);
+
+  useEffect(() => {
+    const token = Cookies.get("token");
+
+    if (!token) {
+      router.replace("/admin/sign-in");
+      return;
+    }
+
+    const user = decode(token);
+    if (!user) {
+      router.replace("/admin/sign-in");
+      return;
+    }
+
+    setIsAuthorized(true);
+    // console.log(token);
+  }, [router]);
+
+  if (!isAuthorized) return <p>Loading...</p>;
+
   return (
     <div className="h-screen bg-blue-50">
       <div className="flex h-full text-black">
         <Sidebar pathname={pathname} />
         <main className="w-full">
           <div className="bg-white w-full py-3 px-3 flex justify-between mb-5">
-            <span className="font-bold">Registered Users</span>
+            <span className="font-bold text-center sm:text-left w-full inline-block">
+              Registered Users
+            </span>
           </div>
 
           <div className="w-full overflow-hidden px-3">

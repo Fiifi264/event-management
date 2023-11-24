@@ -1,6 +1,5 @@
 "use client";
-import Link from "next/link";
-import { useState, useEffect, ChangeEvent, ChangeEventHandler } from "react";
+import { useState, useEffect, ChangeEvent } from "react";
 import EventDetails from "../interfaces/event-details.interfaces";
 import {
   useEventDelete,
@@ -8,12 +7,12 @@ import {
   useEventsMutation,
   useEvents,
 } from "../hooks/useEvents";
-import axios from "axios";
-import { Formik, Field, Form, ErrorMessage, useFormikContext } from "formik";
 import { useUsers } from "../hooks/useUsers";
 import { useQueryClient } from "@tanstack/react-query";
 import Sidebar from "./_components/sidebar";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+import Cookies from "js-cookie";
+import { decode } from "jsonwebtoken";
 
 const defaultEvents: EventDetails[] = [
   {
@@ -42,12 +41,6 @@ const Event = () => {
     description: "",
   });
   const [eventEdit, setEventEdit] = useState<any>(null);
-
-  const {
-    data: users,
-    isLoading: isUserLoading,
-    isError: isUserError,
-  } = useUsers();
   const { data: events } = useEvents();
 
   const queryClient = useQueryClient();
@@ -96,6 +89,29 @@ const Event = () => {
       deleteEvent(eventId);
     }
   };
+
+  const router = useRouter();
+  const [isAuthorized, setIsAuthorized] = useState(false);
+
+  useEffect(() => {
+    const token = Cookies.get("token");
+
+    if (!token) {
+      router.replace("/admin/sign-in");
+      return;
+    }
+
+    const user = decode(token);
+    if (!user) {
+      router.replace("/admin/sign-in");
+      return;
+    }
+
+    setIsAuthorized(true);
+    // console.log(token);
+  }, [router]);
+
+  if (!isAuthorized) return <p>Loading...</p>;
 
   return (
     <div className="h-screen bg-blue-50">
@@ -163,10 +179,12 @@ const Event = () => {
         <Sidebar pathname={pathname} />
         <main className="w-full">
           <div className="bg-white w-full py-3 px-3 flex justify-between mb-5">
-            <span className="font-bold">Events List</span>
+            <span className="font-bold inline-block w-full text-center sm:text-left">
+              Events List
+            </span>
             <button
               onClick={() => setCreateEvent(true)}
-              className="bg-blue-500 text-white py-1 px-5 rounded-md font-medium"
+              className="bg-blue-500 whitespace-nowrap text-white py-1 px-5 rounded-md font-medium"
             >
               Create Event
             </button>

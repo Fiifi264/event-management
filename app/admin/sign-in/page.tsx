@@ -18,7 +18,8 @@ export default function SignIn() {
 
     try {
       const { data } = await axios.post("/api/auth/login", payload);
-      alert(JSON.stringify(data));
+      const token = data.token;
+      document.cookie = `token=${token}; path=/admin`;
 
       // redirect the user to /dashboard
       push("/admin");

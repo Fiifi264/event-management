@@ -37,6 +37,7 @@ export const POST = async (req: NextRequest, res: NextResponse) => {
 
   const response = {
     message: "Authenticated",
+    token,
   };
 
   return new Response(JSON.stringify(response), {
