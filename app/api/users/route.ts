@@ -4,8 +4,8 @@ import { NextRequest, NextResponse } from "next/server";
 
 export const GET = async (req: NextRequest, res: NextResponse) => {
   try {
-    // const users = getUsers();
-    const users = await prisma.user.findMany();
+    const users = getUsers();
+    // const users = await prisma.user.findMany();
 
     return NextResponse.json({ message: "OK", users }, { status: 200 });
   } catch (error) {

@@ -19,9 +19,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        {/* <Provider> */}
-        <TanstackProvider>{children}</TanstackProvider>
-        {/* </Provider> */}
+        <div className="min-h-screen overflow-hidden bg-gradient-to-tr from-emerald-300 to-blue-300">
+          {/* <Provider> */}
+          <TanstackProvider>{children}</TanstackProvider>
+          {/* </Provider> */}
+        </div>
       </body>
     </html>
   );

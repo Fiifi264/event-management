@@ -4,8 +4,8 @@ import { NextRequest, NextResponse } from "next/server";
 
 export const GET = async (req: NextRequest, res: NextResponse) => {
   try {
-    // const events = getEvents();
-    const events = await prisma.events.findMany();
+    const events = getEvents();
+    // const events = await prisma.events.findMany();
 
     return NextResponse.json({ message: "OK", events }, { status: 200 });
   } catch (error) {
