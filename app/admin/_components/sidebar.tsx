@@ -32,7 +32,7 @@ export default function Sidebar({
 
   return (
     <div
-      className={`md:bg-white/60 bg-white/95 p-10 rounded-xl flex items-center flex-col absolute md:relative transition-all h-full md:h-auto z-10 md:left-0 ${
+      className={`md:bg-white/60 bg-white p-10 rounded-xl flex items-center flex-col absolute md:relative transition-all h-full md:h-auto z-10 md:left-0 ${
         sidebarVisible ? "left-0" : "-left-52"
       }`}
     >
@@ -45,7 +45,7 @@ export default function Sidebar({
       <div className="bg-gray-400 h-20 w-20 rounded-full mb-2"></div>
       <p className="font-extrabold mb-10">Administrator</p>
       <div>
-        <Link href={"/admin"} className="cursor-pointer block mb-5">
+        <Link href={"/admin"} className="cursor-pointer block mb-7">
           <div
             className={`flex items-center space-x-3 ${
               pathname === "/admin" &&
@@ -57,11 +57,11 @@ export default function Sidebar({
         </Link>
         <Link
           href={"/admin/registered-users"}
-          className="cursor-pointer block mb-5"
+          className="cursor-pointer block mb-7"
         >
           <div
             className={`flex items-center space-x-3 ${
-              pathname === "/registered-users" &&
+              pathname.includes("/registered-users") &&
               "bg-gradient-to-t from-5% from-emerald-200"
             }`}
           >

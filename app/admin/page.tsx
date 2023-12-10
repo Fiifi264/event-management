@@ -127,21 +127,28 @@ const Event = () => {
           <div className="overflow-auto w-full">
             <table className="table w-full">
               <thead className="text-gray-500">
-                <tr className="text-left">
+                <tr className="text-left hover:bg-white/30 transition">
                   <th className="px-3 py-3">
                     <input type="checkbox" />
                   </th>
                   <th className="px-3 py-3">#</th>
-                  <th className="px-3 py-3 whitespace-nowrap">Event ID</th>
-                  <th className="px-3 py-3 whitespace-nowrap">Title</th>
-                  <th className="px-3 py-3 whitespace-nowrap">Date</th>
-                  <th className="px-3 py-3 whitespace-nowrap">Description</th>
+                  <th className="px-3 py-3 whitespace-nowrap text-sm">
+                    Event ID
+                  </th>
+                  <th className="px-3 py-3 whitespace-nowrap text-sm">Title</th>
+                  <th className="px-3 py-3 whitespace-nowrap text-sm">Date</th>
+                  <th className="px-3 py-3 whitespace-nowrap text-sm">
+                    Description
+                  </th>
                   <th></th>
                 </tr>
               </thead>
               <tbody className="divide-y font-medium">
                 {events?.map((event, index) => (
-                  <tr className="align-top" key={index}>
+                  <tr
+                    className="align-top hover:bg-white/30 transition"
+                    key={index}
+                  >
                     <td className="py-3 whitespace-nowrap px-3">
                       <input type="checkbox" />
                     </td>
